@@ -1,4 +1,4 @@
-const uuid = require('uuid');
+// const uuid = require('uuid');
 const express = require('express');
 const app = express();
 const PORT = 3000;
@@ -24,30 +24,6 @@ const myRouter = require('./routes/router_file');
 //     });
 
 
-// groceryItemDao.updateGroceryNameById('d099d19b-b3db-49af-ae3f-6539845b7141', 'cow', 3.20, false, 10)
-//     .then((data) => {
-//         console.log(data);
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//     })
-
-
-// groceryItemDao.retrieveAllGroceryItems()
-//     .then((data) => {
-//         console.log(data.Items);
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//     });
-
-// groceryItemDao.deleteGroceryItemById('d099d19b-b3db-49af-ae3f-6539845b7141')
-//     .then((data) => {
-//         console.log(data);
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//     })
 app.use('/grocery', myRouter);
 
 

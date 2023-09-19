@@ -1,0 +1,11 @@
+2023-09-19T19:14:04.155Z [info]:  ADD [object Object]
+2023-09-19T19:14:58.716Z [info]:  ADD [object Object]
+2023-09-19T19:15:06.231Z [info]:  ADD {}
+2023-09-19T19:17:23.159Z [info]:  ADD {}
+2023-09-19T19:18:59.213Z [info]:  ADD {}
+2023-09-19T19:19:14.788Z [info]:  ADD {}
+2023-09-19T19:20:05.251Z [info]:  ADD {}
+2023-09-19T19:20:15.404Z [info]:  ADD {}
+2023-09-19T19:20:32.021Z [info]:  ADD {}
+2023-09-19T19:22:42.230Z [info]:  ADD {"name":"applepietest2","quantity":10,"price":5,"purchased":false}
+2023-09-19T19:26:01.365Z [info]:  DELETE 46d695f2-3600-472e-bc5f-2a205c81916a
