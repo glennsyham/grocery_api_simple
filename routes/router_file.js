@@ -20,29 +20,54 @@ const logger = createLogger({
     ]
 })
 
+// router.get('/', (req, res) => {
+//     const requestUrl = url.parse(req.url).query;
+//     const req_params = new URLSearchParams(requestUrl);
+//     const id = req_params.get('id');
+//     if (id == null) {
+//         groceryItemDao.retrieveAllGroceryItems()
+//             .then((data) => {
+//                 res.writeHead(200, { 'Content-Type': 'application/json' });
+//                 res.end(JSON.stringify(data));
+//             })
+//             .catch((err) => {
+//                 console.error(err);
+//             });
+//     } else {
+//         groceryItemDao.retrieveGroceryItemById(id)
+//             .then((data) => {
+//                 res.writeHead(200, { 'Content-Type': 'application/json' });
+//                 res.end(JSON.stringify(data));
+//             })
+//             .catch((err) => {
+//                 console.error(err);
+//             });
+//     }
+
+// });
 router.get('/', (req, res) => {
-    const requestUrl = url.parse(req.url).query;
-    const req_params = new URLSearchParams(requestUrl);
-    const id = req_params.get('id');
-    if (id == null) {
-        groceryItemDao.retrieveAllGroceryItems()
-            .then((data) => {
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify(data));
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    } else {
-        groceryItemDao.retrieveGroceryItemById(id)
-            .then((data) => {
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify(data));
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    }
+    groceryItemDao.retrieveAllGroceryItems()
+        .then((data) => {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(data));
+        })
+        .catch((err) => {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            logger.error(err.message);
+        });
+});
+
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    groceryItemDao.retrieveGroceryItemById(id)
+        .then((data) => {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(data));
+        })
+        .catch((err) => {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            logger.error(err.message);
+        });
 
 });
 
@@ -63,7 +88,8 @@ router.post('/', (req, res) => {
 
         })
             .catch((err) => {
-                console.error(err);
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                logger.error(err.message);
             });
 
 
@@ -86,24 +112,21 @@ router.put('/', (req, res) => {
 
         })
             .catch((err) => {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('Not Found');
-                logger.error(err);
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                logger.error(err.message);
             });
 
 
 
     });
 });
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
     let body = '';
     req.on('data', (chunk) => {
         body += chunk;
     });
     req.on('end', () => {
-        const requestUrl = url.parse(req.url).query;
-        const req_params = new URLSearchParams(requestUrl);
-        const id = req_params.get('id');
+        const { id } = req.params;
         log_data = id;
         groceryItemDao.deleteGroceryItemById(id).then((data) => {
             res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -112,9 +135,8 @@ router.delete('/', (req, res) => {
 
         })
             .catch((err) => {
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.end('Not Found');
-                logger.error(err);
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                logger.error(err.message);
             });
 
 

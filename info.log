@@ -9,3 +9,6 @@
 2023-09-19T19:20:32.021Z [info]:  ADD {}
 2023-09-19T19:22:42.230Z [info]:  ADD {"name":"applepietest2","quantity":10,"price":5,"purchased":false}
 2023-09-19T19:26:01.365Z [info]:  DELETE 46d695f2-3600-472e-bc5f-2a205c81916a
+2023-09-20T00:51:53.414Z [info]:  DELETE 04abeaec-9bc2-42c8-a570-808e37a50093
+2023-09-20T00:52:56.299Z [info]:  DELETE 04abeaec
+2023-09-20T05:59:35.077Z [info]:  DELETE 04abeaec
